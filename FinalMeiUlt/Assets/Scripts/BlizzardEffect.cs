@@ -10,5 +10,5 @@ public class BlizzardEffect : MonoBehaviour
         {
             // activate mei ult
         }
-    }
+    } 
 }
