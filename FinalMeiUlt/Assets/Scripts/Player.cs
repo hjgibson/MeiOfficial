@@ -4,9 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-/// <summary>
-/// gibson, hannah
-/// </summary>
+/*
+ * Author : Gibson, Hannah
+ * Last Modified : 5/6/2024
+ *Controllers the player movement, player can also throw ultimate 
+ */
 public class Player : MonoBehaviour
 {
     public Transform attackPoint;
@@ -31,7 +33,9 @@ public class Player : MonoBehaviour
             ThrowUlt();
         }
     }
-
+    /// <summary>
+    /// player instantiates a prefab and throws it forward, added a throw count so that players starts off with only one ult
+    /// </summary>
     private void ThrowUlt()
     {
         readyToThrow = false;
@@ -42,7 +46,6 @@ public class Player : MonoBehaviour
 
         Vector3 forceToAdd = transform.forward * throwForce +transform.up * upwardForce ;
 
-        ///force is added continuosly, need to take away so ball stays where it lands
         rb.AddForce(forceToAdd, ForceMode.Impulse);
 
         totalThrows--;

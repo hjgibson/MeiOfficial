@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Author : Gibson, Hannah
+ * Last Modified : 5/6/2024
+ * controls the motion of the ultimate being thrown and sticking to the place it lands
+ */
 public class ProjectileStick : MonoBehaviour
 {
     private Rigidbody rb;
@@ -21,7 +25,10 @@ public class ProjectileStick : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-
+    /// <summary>
+    /// when the ult prefab collides with the ground, the ultimate is released
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -44,7 +51,9 @@ public class ProjectileStick : MonoBehaviour
 
         }
     }
-
+    /// <summary>
+    /// creates a bigger sphere collider in which anything inside gets affected by the ult
+    /// </summary>
     private void ReleaseUlt()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
