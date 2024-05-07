@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1744102794517845809}
   - component: {fileID: 8047009680688544392}
   - component: {fileID: 4615133116735090521}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb72dcc87e218846a93f18f22d5cc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  releaseForce: 10
+  releaseForce: 5
   radius: 20
   upwardsForce: 1
