@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
 
     HealthBar healthBar;
 
+    public float speed = 2f;
+
     private void Start()
     {
         health = maxHealth;
@@ -60,6 +62,7 @@ public class Enemy : MonoBehaviour
 
             health -= dmgThisFrame;
             healthBar.UpdateHealthBar(health, maxHealth);
+            speed = 0;
 
             if(health<= 0)
             {
@@ -70,6 +73,7 @@ public class Enemy : MonoBehaviour
 
             if (TimePassed >= 5f)
             {
+                speed = 2f;
                 yield break; 
             }
 

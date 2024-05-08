@@ -18,12 +18,16 @@ public class ProjectileStick : MonoBehaviour
 
     public float upwardsForce = 1f;
 
+    public GameObject blizzardPrefab;
+
     
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        //blizzard = GetComponent<ParticleSystem>();
     }
     /// <summary>
     /// when the ult prefab collides with the ground, the ultimate is released
@@ -34,7 +38,6 @@ public class ProjectileStick : MonoBehaviour
 
         if (collision.gameObject.tag == "Plane")
         {
-           
 
             if (groundHit)
             {
@@ -47,7 +50,10 @@ public class ProjectileStick : MonoBehaviour
 
             rb.isKinematic = true;
 
+         
             ReleaseUlt();
+            
+            
 
         }
     }
@@ -57,12 +63,14 @@ public class ProjectileStick : MonoBehaviour
     private void ReleaseUlt()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        StartCoroutine(StartBlizzard());
 
         foreach (Collider near in colliders)
         {
             if (near.CompareTag("Enemy"))
             {
                 Debug.Log("hit enemy");
+                
                 Enemy health = near.GetComponent<Enemy>();
                 if(health != null)
                 {
@@ -70,9 +78,9 @@ public class ProjectileStick : MonoBehaviour
                 }
             }
             Rigidbody rgb = near.GetComponent<Rigidbody>();
-
-            
         }
+
+
        
     }
     /// <summary>
@@ -85,5 +93,13 @@ public class ProjectileStick : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
 
         
+    }
+
+    private IEnumerator StartBlizzard()
+    {
+        Instantiate(blizzardPrefab, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(5);
+        blizzardPrefab.gameObject.SetActive(false);
+
     }
 }
