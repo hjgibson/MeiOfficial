@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -22,6 +23,10 @@ public class Player : MonoBehaviour
 
     private bool readyToThrow;
 
+    private PlayerActionMap playerActionMap;
+
+    private float speed = 4f;
+
     private void Start()
     {
         readyToThrow = true;
@@ -32,6 +37,17 @@ public class Player : MonoBehaviour
         {
             ThrowUlt();
         }
+    }
+    private void Awake()
+    {
+        playerActionMap = new PlayerActionMap();
+        playerActionMap.Enable();
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 moveVector = playerActionMap.Movement.Move.ReadValue<Vector2>();
+        GetComponent<Rigidbody>().AddForce( new Vector3(moveVector.x, 0, moveVector.y) * speed * Time.deltaTime, ForceMode.Impulse);
     }
     /// <summary>
     /// player instantiates a prefab and throws it forward, added a throw count so that players starts off with only one ult
