@@ -20,7 +20,7 @@ public class ProjectileStick : MonoBehaviour
 
     public GameObject blizzardPrefab;
 
-    
+    public float waitTime = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +64,7 @@ public class ProjectileStick : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         StartCoroutine(StartBlizzard());
-
+        
         foreach (Collider near in colliders)
         {
             if (near.CompareTag("Enemy"))
@@ -94,12 +94,17 @@ public class ProjectileStick : MonoBehaviour
 
         
     }
-
+    /// <summary>
+    /// starts the coroutine to deactivate the blizzard after five seconds
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator StartBlizzard()
     {
-        Instantiate(blizzardPrefab, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(5);
-        blizzardPrefab.gameObject.SetActive(false);
+       //GameObject newBlizzard = Instantiate(blizzardPrefab, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("start");
+       // newBlizzard.gameObject.SetActive(false);
+        Destroy(this.gameObject);
 
     }
 }

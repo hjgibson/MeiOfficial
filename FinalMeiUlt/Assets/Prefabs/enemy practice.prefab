@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31031588, g: 0.9528302, b: 0.31011927, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.18602705, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -317,7 +317,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: be39db0bf994b0d4fa89c85320eedcaa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -378,7 +378,6 @@ MonoBehaviour:
   duration: 5
   dmgThisFrame: 0
   speed: 2
-  speedEnemy: 2
   direction: {x: 0, y: 0, z: 0}
 --- !u!1 &5778734858643558897
 GameObject:

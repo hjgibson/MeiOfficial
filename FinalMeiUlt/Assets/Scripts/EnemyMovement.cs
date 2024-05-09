@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * Author : Gibson, Hannah
+ * Last Modified : 5/7/24
+ * controls the enemy movement while inheriting from the Enemy script
+ */
 public class EnemyMovement : Enemy
 {
   

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -15,7 +17,7 @@ public class Player : MonoBehaviour
     public Transform attackPoint;
     public GameObject objectToThrow;
 
-    public int totalThrows;
+    public int totalThrows = 2;
     public float throwCooldown;
 
     public float throwForce =10f;
@@ -25,15 +27,25 @@ public class Player : MonoBehaviour
 
     private PlayerActionMap playerActionMap;
 
-    private float speed = 4f;
+    public float speed = 4f;
+
+    private Rigidbody rb;
+
+    private Vector3 moveDirection;
+
+    public Transform orientation;
 
     private void Start()
     {
+
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+
         readyToThrow = true;
     }
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0) && readyToThrow && totalThrows > 0)
+        if (Input.GetKey(KeyCode.Q) && readyToThrow && totalThrows > 0)
         {
             ThrowUlt();
         }
@@ -46,8 +58,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        moveDirection = orientation.forward + orientation.right;
         Vector2 moveVector = playerActionMap.Movement.Move.ReadValue<Vector2>();
-        GetComponent<Rigidbody>().AddForce( new Vector3(moveVector.x, 0, moveVector.y) * speed * Time.deltaTime, ForceMode.Impulse);
+        rb.transform.Translate(new Vector3(moveVector.x, 0f, moveVector.y) * speed * Time.deltaTime);
     }
     /// <summary>
     /// player instantiates a prefab and throws it forward, added a throw count so that players starts off with only one ult
@@ -69,5 +82,7 @@ public class Player : MonoBehaviour
 
     }
 
-  
+   
+
+
 }

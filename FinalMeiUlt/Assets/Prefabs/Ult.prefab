@@ -4937,7 +4937,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 014aaed3960a80f48aaec5d2bffac7f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5024,5 +5024,4 @@ MonoBehaviour:
   upwardsForce: 1
   blizzardPrefab: {fileID: 2594635874514399994, guid: 9e3b87eac0b12084bb43077e58290355,
     type: 3}
-  enemyMovement: {fileID: 1310887867849561060, guid: 2f3f92feeac80654c9b2a336b2d50145,
-    type: 3}
+  waitTime: 5
